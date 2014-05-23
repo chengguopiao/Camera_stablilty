@@ -102,7 +102,7 @@ class CameraTest(unittest.TestCase):
         exposure = random.choice(EXPOSURE_OPTION) #Random select an option
         SM.setCameraSetting('burst',4,EXPOSURE_OPTION.index(exposure)+1) #Tap on the selected option by its index
         assert bool(AD.cmd('cat',EXPOSURE_STATE).find(exposure)+1)
-        self._captureAndCheckPicCount('single',5)
+        self._captureAndCheckPicCount('single',10)
 
     def testCapturePictureWithScenes(self):
         '''
@@ -116,7 +116,7 @@ class CameraTest(unittest.TestCase):
         scene = random.choice(SCENE_OPTION) #Random select an option
         SM.setCameraSetting('burst',3,SCENE_OPTION.index(scene)+1) #Tap on the selected option by its index
         assert bool(AD.cmd('cat',SCENE_STATE).find(scene)+1)
-        self._captureAndCheckPicCount('single',5)
+        self._captureAndCheckPicCount('single',10)
 
     def testCaptureWithPictureSize(self):
         '''
@@ -130,7 +130,7 @@ class CameraTest(unittest.TestCase):
         size = random.choice(PICSIZE_OPTION) #Random select an option
         SM.setCameraSetting('burst',2,PICSIZE_OPTION.index(size)+1) #Tap on the selected option by its index
         assert bool(AD.cmd('cat',PICSIZE_STATE).find(size)+1)
-        self._captureAndCheckPicCount('single',5)
+        self._captureAndCheckPicCount('single',10)
         SM.setCameraSetting('burst',2,1) #Force set to the default setting
 
     def testCapturepictureWithGeoLocation(self):
@@ -145,7 +145,7 @@ class CameraTest(unittest.TestCase):
         geo = random.choice(GEO_OPTION) #Random select an option
         SM.setCameraSetting('burst',1,GEO_OPTION.index(geo)+1) #Tap on the selected option by its index
         assert bool(AD.cmd('cat',GEO_STATE).find(geo)+1)
-        self._captureAndCheckPicCount('single',5)
+        self._captureAndCheckPicCount('single',10)
 
     def _captureAndCheckPicCount(self,capturemode,delaytime=2):
         beforeNo = AD.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
