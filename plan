@@ -1,5 +1,4 @@
 [tests]
-#script.burstfastcapture.CameraTest.testCaptureWithExposure = 50
 script.burstfastcapture.CameraTest.testCapturePictureWithScenes = 50
 script.burstfastcapture.CameraTest.testCaptureWithPictureSize = 50
 script.burstfastcapture.CameraTest.testCapturepictureWithGeoLocation = 50
@@ -55,3 +54,4 @@ script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocation = 50
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalance = 50
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposure = 50
 script.videocapture.CameraTest.testRecordVideoWithCaptureImage = 50
+script.burstfastcapture.CameraTest.testCaptureWithExposure = 50
