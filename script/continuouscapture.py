@@ -52,9 +52,6 @@ class CameraTest(unittest.TestCase):
     
     def setUp(self):
         super(CameraTest,self).setUp()
-        # rm DCIM folder and refresh from adb shell
-        a.cmd('rm','/sdcard/DCIM/100ANDRO')
-        a.cmd('refresh','/sdcard/DCIM/100ANDRO')
         #Because default camera after launching is single mode, so we set this step in setUp().
         #Step 1. Launch single capture activity
         a.cmd('launch','com.intel.camera22/.Camera')
