@@ -79,9 +79,6 @@ class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
         #Delete all image/video files captured before
-        AD.cmd('rm','/sdcard/DCIM/*')
-        #Refresh media after delete files
-        AD.cmd('refresh','/sdcard/DCIM/*')
         #Launch social camera
         self._launchCamera()
         SM.switchcamera('burstfast')
