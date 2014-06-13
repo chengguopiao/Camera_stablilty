@@ -81,12 +81,18 @@ class CameraTest(unittest.TestCase):
         #Delete all image/video files captured before
         #Launch social camera
         self._launchCamera()
+        time.sleep(1)
+        if d(text = 'OK').wait.exists(timeout = 3000):
+            d(text = 'OK').click.wait()
+        assert d(resourceId = 'com.intel.camera22:id/shutter_button'),'Launch camera failed!!' 
+        time.sleep(1)
         SM.switchcamera('burstfast')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
         self._pressBack(4)
-
+        AD.cmd('pm','com.intel.camera22')
+        
     def testCaptureWithExposure(self):
         '''
             Summary: Capture image with Exposure
