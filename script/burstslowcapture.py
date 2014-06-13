@@ -78,17 +78,18 @@ GEO_OPTION      = ['off','on']
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
-        #Delete all image/video files captured before
-        AD.cmd('rm','/sdcard/DCIM/*')
-        #Refresh media after delete files
-        AD.cmd('refresh','/sdcard/DCIM/*')
         #Launch social camera
         self._launchCamera()
+        time.sleep(1)
+        if d(text = 'OK').wait.exists(timeout = 3000):
+            d(text = 'OK').click.wait()
+        assert d(resourceId = 'com.intel.camera22:id/shutter_button'),'Launch camera failed!!' 
         SM.switchcamera('burstslow')
 
     def tearDown(self):
         super(CameraTest,self).tearDown()
         self._pressBack(4)
+        AD.cmd('pm','com.intel.camera22')
 
     def testCaptureWithExposure(self):
         '''
