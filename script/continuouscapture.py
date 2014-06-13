@@ -43,6 +43,7 @@ SELFTIMER_OPTION=['0','3','5','10']
 WHITEBALANCE_OPTION=['cloudy-daylight', 'fluorescent','daylight','incandescent','auto']
 SCENCE_OPTION=['barcode', 'night-portrait', 'portrait','landscape','night','sports','auto']
 FDFR_OPTION=['off', 'on']
+DRAWUP_CAPTUREBUTTON='adb shell input swipe 530 1690 530 1600 '
 #################################
 
 PACKAGE_NAME = 'com.intel.camera22'
@@ -278,10 +279,14 @@ class CameraTest(unittest.TestCase):
 #######################################################3
     def _continuouCapturePic(self):
         beforeNo = a.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
-        tb.takePicture('longclick')
+        self._longclickcapture()
         afterNo = a.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
         if beforeNo == afterNo: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
+ 
+     def _longclickcapture(self):
+        commands.getoutput(DRAWUP_CAPTUREBUTTON + '2000')
+        time.sleep(2) 
     
     def _pressBack(self,touchtimes):
         for i in range(1,touchtimes+1):
